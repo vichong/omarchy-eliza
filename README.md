@@ -11,16 +11,15 @@ first chatbot belongs in the bar too.
 
 I met ELIZA on a Macintosh in 1985, when I was about ten. For the first few
 exchanges I was sure there was something intelligent in there. Then the seams
-showed, which was its own lesson. That Macintosh is the 1985 era in this
-plugin, as close as I could get it to the one I remember. I found her again
-later as a DOS program, and again on a Palm III, where she lived in my pocket.
+showed, which was its own lesson. I found her again later as a DOS program, and
+again on a Palm III, where she lived in my pocket.
 
-In May 1999 Douglas Adams came to Australia and gave a talk at the Australian
-Technology Park in Sydney. Most people know him as the author of The
-Hitchhiker's Guide to the Galaxy; he was just as much a technology visionary,
-one of the first to explain to everyone else why computers and the internet
-were about to change everything. Part of the way through he brought up ELIZA,
-the program that gives you the illusion of talking to a mind.
+In May 1999 Douglas Adams gave a talk at the Australian Technology Park in
+Sydney. Most people know him as the author of The Hitchhiker's Guide to the
+Galaxy; he was just as much a technology visionary, one of the first to explain
+to everyone else why computers and the internet were about to change
+everything. Part of the way through he brought up ELIZA, the program that gives
+you the illusion of talking to a mind.
 
 I realised my Palm III, with ELIZA on it, was sitting in the car. When the talk
 ended and people lined up to meet him, I bolted out, grabbed it, and came back
@@ -32,12 +31,11 @@ computers were going, reaching back to a program from 1966 to make his point,
 and me standing there with it in my hand.
 
 The illusion he described has since grown into frontier and open-weight models
-that can hold the conversation ELIZA could only gesture at, and I now run
-Omarchy, an agentic OS where those models are a key part of the system. ELIZA
-is the grandmother of that whole lineage, its matriarch, even if the irony is
-that she was only ever the illusion. So I had to bring her along: the one who
-started the conversation, and the one who made a ten-year-old at a Macintosh
-believe, for a minute or two, that the computer was listening.
+that can hold the conversation ELIZA could only gesture at. I now run Omarchy,
+an agentic OS, where those models are a key part of the system. ELIZA is the
+matriarch of that lineage, illusion and all, so I had to put her there too: the
+one who started the conversation, and the one who made a ten-year-old at a
+Macintosh believe, for a minute or two, that the computer was listening.
 
 ## What is in here
 
