@@ -1,6 +1,6 @@
 .pragma library
 var KEYS = ["era", "thoughts", "blink", "showLabel", "macPaper", "teletypeCps", "phosphor", "boot", "demoIdle"]
-function defaults() { return {era: "1966", thoughts: true, blink: true, showLabel: true, macPaper: false, teletypeCps: 15, phosphor: "green", boot: true, demoIdle: true} }
+function defaults() { return {era: "1966", thoughts: false, blink: true, showLabel: true, macPaper: false, teletypeCps: 15, phosphor: "green", boot: true, demoIdle: true} }
 function normalize(raw) {
   var out = defaults()
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return out

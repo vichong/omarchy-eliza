@@ -1,6 +1,6 @@
 const {loadModule, equal, assert, done} = require('./helpers')
 const C = loadModule('ConfigStore.js')
-const defaults = {era: '1966', thoughts: true, blink: true, showLabel: true, macPaper: false, teletypeCps: 15, phosphor: 'green', boot: true, demoIdle: true}
+const defaults = {era: '1966', thoughts: false, blink: true, showLabel: true, macPaper: false, teletypeCps: 15, phosphor: 'green', boot: true, demoIdle: true}
 equal(C.defaults(), defaults, 'defaults')
 equal(C.parse('').config, defaults, 'empty config')
 for (const text of ['{', 'null', '[]', '42']) {

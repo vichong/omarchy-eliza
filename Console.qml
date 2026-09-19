@@ -172,7 +172,7 @@ FocusScope {
                   EraSwitch {}
                 }
                 Repeater {
-                  model: [{key: "boot", label: "Play boot sequences"}, {key: "demoIdle", label: "Play the 1966 conversation when idle"}, {key: "thoughts", label: "1966 trace"}, {key: "blink", label: "Blink bar mark"}, {key: "showLabel", label: "Show ELIZA label"}, {key: "macPaper", label: "1985 black on white"}]
+                  model: [{key: "boot", label: "Play boot sequences"}, {key: "demoIdle", label: "Play the 1966 conversation when idle"}, {key: "blink", label: "Blink bar mark"}, {key: "showLabel", label: "Show ELIZA label"}, {key: "macPaper", label: "1985 black on white"}]
                   Ui.Toggle {
                     required property var modelData
                     width: settingsColumn.width; height: Style.space(30)
@@ -296,10 +296,27 @@ FocusScope {
       Item {
         id: footer
         Layout.fillWidth: true
-        Layout.preferredHeight: Math.max(footerHint.implicitHeight, turnLabel.implicitHeight)
+        Layout.preferredHeight: Math.max(footerHint.implicitHeight, turnLabel.implicitHeight, traceRow.implicitHeight)
         opacity: root.tab === "chat" ? 1 : 0
+        // 1966 only: the trace is Hay's modern look inside the machine, so it is opt-in.
+        Row {
+          id: traceRow
+          anchors.left: parent.left; anchors.verticalCenter: parent.verticalCenter
+          spacing: Style.space(6)
+          visible: !root.mac && footerHint.text === ""
+          enabled: root.tab === "chat"
+          Text { anchors.verticalCenter: parent.verticalCenter; text: "Trace"; color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.caption }
+          Ui.ToggleSwitch {
+            anchors.verticalCenter: parent.verticalCenter
+            trackHeight: Style.space(14)
+            foreground: root.ink
+            checked: !!root.service && root.service.thoughts
+            onToggled: { if (root.service) root.service.toggleThoughts(); root.focusInput() }
+          }
+        }
         Text {
           id: footerHint
+          anchors.verticalCenter: parent.verticalCenter
           width: parent.width - turnLabel.implicitWidth - Style.space(6)
           text: root.service && root.service.booting ? "any key or click skips" : root.service && root.service.demo ? "demo · any key takes over" : ""
           wrapMode: Text.Wrap; textFormat: Text.PlainText
@@ -307,7 +324,7 @@ FocusScope {
         }
         Text {
           id: turnLabel
-          anchors.top: parent.top; anchors.right: parent.right
+          anchors.verticalCenter: parent.verticalCenter; anchors.right: parent.right
           text: "turn " + (root.service ? root.service.turns : 0) + (root.mac && root.service ? " · Memory: " + root.service.memoryCount : "")
           color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.caption
         }

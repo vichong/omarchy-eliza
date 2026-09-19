@@ -85,7 +85,9 @@ words and spacing, and shows its memory count instead of a trace.
 
 - Enter sends; Up/Down recall the last 20 user lines. PgUp/PgDn scroll.
 - Escape finishes a teletype reply, then closes on the next press.
-- Ctrl+T toggles the 1966 trace; click a caption to expand it. Only the newest
+- Ctrl+T, or the **Trace** switch under the 1966 screen, toggles the trace. It is
+  off by default: the 1966 program printed only its replies, and the trace is
+  Anthony Hay's modern view of the rules firing (headed "Thought for … ms"); click a caption to expand it. Only the newest
   reply starts expanded. Long traces scroll inside a bounded inset.
 - Ctrl+N starts over; Ctrl+1/2 select 1966/1985.
 - Ctrl+, opens settings; F1 opens About. The tabs return to chat.
@@ -133,7 +135,7 @@ external edits reload automatically. Unknown keys are discarded, invalid
 values use defaults, and teletype speed is clamped to 5–60.
 
 ```json
-{ "era": "1966", "thoughts": true, "blink": true, "showLabel": true, "macPaper": false,
+{ "era": "1966", "thoughts": false, "blink": true, "showLabel": true, "macPaper": false,
   "teletypeCps": 15, "phosphor": "green", "boot": true, "demoIdle": true }
 ```
 
