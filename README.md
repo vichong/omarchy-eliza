@@ -9,7 +9,7 @@ first chatbot belongs in the bar too.
 
 ## Why I made this
 
-I met ELIZA on a Macintosh in 1985, when I was about ten. For the first few
+I met ELIZA on an Apple Mac in the 80s, when I was about ten. For the first few
 exchanges I was sure there was something intelligent in there. Then the seams
 showed, which was its own lesson. I found her again later as a DOS program, and
 again on a Palm III, where she lived in my pocket.
@@ -21,7 +21,7 @@ to everyone else why computers and the internet were about to change
 everything. Part of the way through he brought up ELIZA, the program that gives
 you the illusion of talking to a mind.
 
-I realised she was out in the car, on that Palm. When the talk ended and people
+I realised she was out in the car, on that PalmPilot. When the talk ended and people
 lined up to meet him, I bolted out, grabbed it, and came back to show him. I
 think he was genuinely surprised to be handed, on a handheld computer, the
 program he had just been talking about.
@@ -34,7 +34,7 @@ The illusion he described has since grown into frontier and open-weight models
 that can hold the conversation ELIZA could only gesture at. I now run Omarchy,
 an agentic OS, where those models are a key part of the system. ELIZA is the
 matriarch of that lineage, illusion and all, so I had to put her there too: the
-one who started the conversation, and the one who made a kid at a Macintosh
+one who started the conversation, and the one who made that kid in front of that Mac
 believe, for a minute or two, that the computer was listening.
 
 ## What is in here
