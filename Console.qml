@@ -231,23 +231,52 @@ FocusScope {
               Column {
                 id: aboutColumn
                 width: settingsView.width; visible: root.tab === "about"
-                spacing: Style.spacing.lg
-                Repeater {
-                  model: ["ELIZA is Joseph Weizenbaum’s 1966 program for exploring natural language conversation. Its DOCTOR script reflects your words using pattern matching.", "“I had not realized that extremely short exposures to a relatively simple computer program could induce powerful delusional thinking in quite normal people.”\n— Joseph Weizenbaum, Computer Power and Human Reason (1976)", "The code was found in his MIT papers in 2021 and released CC0 by his estate.", "She is named after Eliza Doolittle of Pygmalion, because she could be taught. Typing + put the original into a teaching mode (PLEASE INSTRUCT ME) where new rules could be added, ranked and saved. It was fully built, yet the 1966 paper gives it one sentence; it came to light again when the recovered code was brought back to life (ELIZA Reanimated, 2025).", "Anthony and Max Hay — engine, CC0\nCharles Hayden — Eliza 1.3 for Macintosh, 1985\nThe ELIZA Archaeology Project\nLane, Hay, Schwarz, Berry, Shrager — ELIZA Reanimated, the CTSS login", "Fonts: VT323 by Peter Hull (SIL OFL) and ChicagoFLF by Robin Casady (public domain). The 1985 startup icons are redrawn after Susan Kare’s Macintosh originals, as a tribute. Not affiliated with Apple or MIT. Full notices are in THIRD_PARTY_NOTICES.md."]
-                  Text {
-                    required property string modelData
-                    width: aboutColumn.width; text: modelData
-                    textFormat: Text.PlainText; wrapMode: Text.Wrap; lineHeight: 1.35
-                    color: root.ink; font.family: Style.font.family; font.pixelSize: Style.font.body
+                spacing: Style.spacing.md
+                AboutText { text: "ELIZA is Joseph Weizenbaum’s 1966 program for studying conversation between people and computers. Her DOCTOR script plays a therapist by matching patterns in what you type and handing your own words back." }
+                // The warning is the point of the homage, so it gets the one emphasis on the page.
+                Row {
+                  width: aboutColumn.width; spacing: Style.space(10)
+                  Rectangle { width: Style.space(2); height: quote.height; color: Color.accent }
+                  Column {
+                    id: quote
+                    width: parent.width - Style.space(12); spacing: Style.space(4)
+                    AboutText { width: parent.width; text: "“I had not realized that extremely short exposures to a relatively simple computer program could induce powerful delusional thinking in quite normal people.”" }
+                    AboutNote { width: parent.width; text: "Joseph Weizenbaum, Computer Power and Human Reason, 1976" }
                   }
                 }
+                AboutHeading { text: "The name" }
+                AboutText { text: "She is named after Eliza Doolittle of Pygmalion, because she could be taught. Typing + put the original into a teaching mode, PLEASE INSTRUCT ME, where rules could be added, ranked and saved. The 1966 paper gives it one sentence." }
+                AboutHeading { text: "The code" }
+                AboutText { text: "The original source was found in Weizenbaum’s papers at MIT in 2021 and released CC0 by his estate. It has since run again on a restored CTSS (ELIZA Reanimated, 2025), which is how the teaching mode came back to light." }
+                AboutHeading { text: "Credits" }
+                Repeater {
+                  model: [
+                    {who: "Anthony and Max Hay", what: "the 1966 engine, CC0"},
+                    {who: "Charles Hayden", what: "Eliza 1.3 for Macintosh, 1985"},
+                    {who: "The ELIZA Archaeology Project", what: "finding and restoring the original"},
+                    {who: "Lane, Hay, Schwarz, Berry, Shrager", what: "ELIZA Reanimated, source of the CTSS login"},
+                    {who: "Peter Hull", what: "VT323 font, SIL OFL"},
+                    {who: "Robin Casady", what: "ChicagoFLF font, public domain"},
+                    {who: "Susan Kare", what: "the Macintosh startup icons, redrawn here as a tribute"}
+                  ]
+                  Column {
+                    id: credit
+                    required property var modelData
+                    width: aboutColumn.width; spacing: 0
+                    AboutText { width: parent.width; text: credit.modelData.who; lineHeight: 1.2 }
+                    AboutNote { width: parent.width; text: credit.modelData.what }
+                  }
+                }
+                AboutNote { text: "Not affiliated with Apple, MIT or Omarchy. Full notices are in THIRD_PARTY_NOTICES.md." }
+                AboutHeading { text: "Read more" }
                 Text {
                   width: aboutColumn.width
                   text: '<a href="https://findingeliza.org">findingeliza.org</a><br><a href="https://github.com/anthay/ELIZA">github.com/anthay/ELIZA</a><br><a href="https://chayden.net/eliza">chayden.net/eliza</a><br><a href="https://arxiv.org/abs/2501.06707">arxiv.org/abs/2501.06707</a>'
-                  textFormat: Text.StyledText; wrapMode: Text.Wrap; lineHeight: 1.35
-                  color: root.ink; linkColor: Color.accent; font.family: Style.font.family; font.pixelSize: Style.font.body
+                  textFormat: Text.StyledText; wrapMode: Text.Wrap; lineHeight: 1.5
+                  color: root.ink; linkColor: Color.accent; font.family: Style.font.family; font.pixelSize: Style.font.caption
                   onLinkActivated: function(link) { Qt.openUrlExternally(link) }
                 }
+                Item { width: 1; height: Style.space(4) }
               }
             }
           }
@@ -380,6 +409,9 @@ FocusScope {
     width: settingsColumn.width; height: Style.space(30)
     spacing: Style.spacing.md
   }
+  component AboutText: Text { width: aboutColumn.width; color: root.ink; font.family: Style.font.family; font.pixelSize: Style.font.body; lineHeight: 1.35; wrapMode: Text.Wrap; textFormat: Text.PlainText }
+  component AboutNote: Text { width: aboutColumn.width; color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.caption; lineHeight: 1.3; wrapMode: Text.Wrap; textFormat: Text.PlainText }
+  component AboutHeading: Text { width: aboutColumn.width; topPadding: Style.space(6); color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.caption; font.capitalization: Font.AllUppercase; font.letterSpacing: 1.5; textFormat: Text.PlainText }
   component FieldLabel: Text { color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.body; textFormat: Text.PlainText }
   component Caption: Text { width: settingsColumn.width; color: root.muted; font.family: Style.font.family; font.pixelSize: Style.font.caption; wrapMode: Text.Wrap; textFormat: Text.PlainText }
 }
