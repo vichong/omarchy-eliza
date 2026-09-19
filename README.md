@@ -27,10 +27,12 @@ that, on an Apple Mac in the 80s, she was the first thing that ever felt like
 AI to me. I was a kid, and for the first few exchanges I was sure there was
 something intelligent in there.
 
-These days I run Omarchy, an agentic OS, and I watch frontier and open-weight
-models do things that kid would never have believed. I am still amazed.
+These days I run Omarchy, an agentic OS, next to frontier and open-weight
+models that do things that kid would not have believed. ELIZA never understood
+a word anyone typed. She is still the matriarch of them all, and I am still
+amazed.
 
-So this is my homage to the matriarch of them all.
+So I put her in Omarchy.
 
 ## What is in here
 
