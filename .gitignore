@@ -9,3 +9,5 @@ research/**/*.macwrite
 research/**/*.rsrc
 research/hayden-java/zip/*.class
 research/hayden-java/Eliza.zip
+# Working files for the README story (writing-beats method): raw notes, not for publication.
+docs/story/
