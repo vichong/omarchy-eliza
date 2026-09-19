@@ -1,0 +1,11 @@
+node_modules
+# Upstream sources, recovered 1985 artefacts and design exports stay local:
+# they are other people's work and are not needed to run or test the plugin.
+research/
+docs/mockup/
+*.bak
+research/**/*.sit
+research/**/*.macwrite
+research/**/*.rsrc
+research/hayden-java/zip/*.class
+research/hayden-java/Eliza.zip

@@ -1,0 +1,12 @@
+// Runs Hay's built-in engine tests and a file-loaded DOCTOR smoke test under Node.
+const { loadModule, assert, equal, done } = require("./helpers.js")
+const fs = require("fs"), path = require("path")
+const E = loadModule("Eliza.js")
+E.api.elizaTest()
+const text = fs.readFileSync(path.join(__dirname, "..", "scripts", "doctor-1966.txt"), "utf8")
+const [status, script] = E.api.readScript(text)
+equal(status, "success", "doctor-1966.txt parses")
+const eliza = new E.api.Eliza(script.rules, script.memoryRule, new E.api.nullTracer())
+equal(eliza.response("Men are all alike."), "IN WHAT WAY", "first line of the 1966 conversation")
+equal(eliza.response("They're always bugging us about something or other."), "CAN YOU THINK OF A SPECIFIC EXAMPLE", "second line")
+done("test_engine")

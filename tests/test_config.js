@@ -1,0 +1,21 @@
+const {loadModule, equal, assert, done} = require('./helpers')
+const C = loadModule('ConfigStore.js')
+const defaults = {era: '1966', thoughts: true, blink: true, showLabel: true, macPaper: false, teletypeCps: 15, phosphor: 'green', boot: true, demoIdle: true}
+equal(C.defaults(), defaults, 'defaults')
+equal(C.parse('').config, defaults, 'empty config')
+for (const text of ['{', 'null', '[]', '42']) {
+  assert(C.parse(text).error, 'bad JSON/object reports error')
+  equal(C.parse(text).config, defaults, 'bad config defaults')
+}
+const updated = C.merge(defaults, {era: '1985', thoughts: false, blink: false, showLabel: false, macPaper: true, teletypeCps: 30, phosphor: 'amber', boot: false, demoIdle: false, unknown: true})
+equal(updated, {era: '1985', thoughts: false, blink: false, showLabel: false, macPaper: true, teletypeCps: 30, phosphor: 'amber', boot: false, demoIdle: false}, 'merge known keys')
+equal(defaults, C.defaults(), 'merge leaves original alone')
+equal(C.parse(C.serialize(updated)).config, updated, 'round trip')
+for (const [value, expected] of [[-20, 5], [100, 60], [5, 5], [60, 60], [15.8, 16], [Infinity, 15], [NaN, 15], ['30', 15], [null, 15]]) equal(C.merge(defaults, {teletypeCps: value}).teletypeCps, expected, 'speed clamp/type')
+equal(C.merge(defaults, {era: 'bad', thoughts: 'false', blink: 0, macPaper: 1}), defaults, 'invalid values default')
+assert(!C.serialize({unknown: 1}).includes('unknown'), 'serialization only known keys')
+for (const phosphor of ['green', 'amber', 'theme']) equal(C.merge(defaults, {phosphor}).phosphor, phosphor, 'phosphor palette')
+for (const value of [null, 1, 'false', {}, []]) equal(C.merge(defaults, {phosphor: value, boot: value}), defaults, 'invalid new keys default')
+equal(C.merge(defaults, {boot: false}).boot, false, 'boot disabled')
+equal(C.parse('{"era":"omarchy","omarchyScript":"hayden-1985"}').config, defaults, 'retired era and script fall back to 1966')
+done('config')

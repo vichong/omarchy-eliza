@@ -1,0 +1,77 @@
+[
+  {
+    "input": "Men are all alike.",
+    "text": "In what way ?",
+    "finished": false
+  },
+  {
+    "input": "They're always bugging us about something or other.",
+    "text": "Can you think of a specific example ?",
+    "finished": false
+  },
+  {
+    "input": "Well, my boyfriend made me come here.",
+    "text": "Your boyfriend made you come here  ?",
+    "finished": false
+  },
+  {
+    "input": "He says I'm depressed much of the time.",
+    "text": "I am sorry to hear that you are depressed .",
+    "finished": false
+  },
+  {
+    "input": "It's true.  I am unhappy.",
+    "text": "Do you think coming here will help you not to be unhappy ?",
+    "finished": false
+  },
+  {
+    "input": "I need some help, that much seems certain.",
+    "text": "What would it mean to you if you got some help  ?",
+    "finished": false
+  },
+  {
+    "input": "Perhaps I could learn to get along with my mother.",
+    "text": "Tell me more about your family.",
+    "finished": false
+  },
+  {
+    "input": "My mother takes care of me.",
+    "text": "Who else in your family takes care of you  ?",
+    "finished": false
+  },
+  {
+    "input": "My father.",
+    "text": "Your father ?",
+    "finished": false
+  },
+  {
+    "input": "You are like my father in some ways.",
+    "text": "What resemblence do you see?",
+    "finished": false
+  },
+  {
+    "input": "You are not very aggressive, but I think you don't want me to notice that.",
+    "text": "What makes you think I am not very aggressive  ?",
+    "finished": false
+  },
+  {
+    "input": "You don't argue with me.",
+    "text": "Why do you think I don't argue with you ?",
+    "finished": false
+  },
+  {
+    "input": "You are afraid of me.",
+    "text": "Does it please you to believe I am afraid of you  ?",
+    "finished": false
+  },
+  {
+    "input": "My father is afraid of everybody.",
+    "text": "What else comes to mind when you think of your father ?",
+    "finished": false
+  },
+  {
+    "input": "Bullies.",
+    "text": "Earlier you said your boyfriend made you come here  .",
+    "finished": false
+  }
+]

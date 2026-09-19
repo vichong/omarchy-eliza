@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Oracle check for Hayden.js: run Charles Hayden's original Java over the same
+# inputs and diff the two transcripts. Needs a JDK; the 1998 source uses
+# java.awt.Event, which was removed in JDK 21, so prefer a JDK 17 toolchain
+# (Arch package jdk17-openjdk). Developer tool only; the plugin never runs it.
+# Usage: tests/hayden-oracle [inputs-file]   (default: the classic conversation)
+set -euo pipefail
+root=$(cd "$(dirname "$0")/.." && pwd)
+inputs=${1:-$root/tests/fixtures/classic-inputs.txt}
+javac_bin=$(ls /usr/lib/jvm/java-17-openjdk/bin/javac 2>/dev/null || command -v javac || true)
+java_bin=${javac_bin%javac}java
+[ -n "$javac_bin" ] || { echo "no javac found; a JDK 17 is needed (Arch package jdk17-openjdk)"; exit 2; }
+# Hayden's Java is not redistributed here: fetch it from http://www.chayden.net/eliza/Eliza.html
+# and unpack the sources into research/hayden-java/ (git-ignored).
+ls "$root"/research/hayden-java/*.java >/dev/null 2>&1 || { echo "skipped: no upstream Java in research/hayden-java/"; exit 0; }
+work=$(mktemp -d)
+trap 'rm -rf "$work"' EXIT
+mkdir -p "$work/Eliza"
+cp "$root"/research/hayden-java/*.java "$work/Eliza/"
+# The Java reads "script" and the test file from the working directory.
+cp "$root/scripts/hayden-1985.txt" "$work/script"
+tr -d '\r' < "$inputs" > "$work/test"
+# The Java prints a note for the 1985 script's font:/size: lines; that is not a reply.
+(cd "$work" && "$javac_bin" -nowarn -d . Eliza/*.java 2>/dev/null && "$java_bin" -cp . Eliza.ElizaApp script test) | grep -v '^Unrecognized input:' > "$work/java.out"
+node "$root/tests/oracle_hayden.js" "$inputs" > "$work/js.out"
+turns=$(grep -c '^>>' "$work/java.out")
+if diff -u "$work/java.out" "$work/js.out" > "$work/diff"; then
+  echo "hayden-oracle: identical ($turns turns)"
+else
+  # Memory recall picks a random reassembly in Java (Decomp.stepRule); the JS run pins
+  # Math.random to 0, so a recall line legitimately differs. Anything else is a bug.
+  other=$(grep -E '^[-+][^-+]' "$work/diff" | grep -vcE 'Lets discuss further why your|Earlier you said|Does that have anything to do with the fact|But your' || true)
+  changed=$(grep -cE '^-[^-]' "$work/diff" || true)
+  echo "hayden-oracle: $turns turns, $changed replies differ, $other outside the random memory-recall rule"
+  cat "$work/diff"
+  [ "$other" -eq 0 ] && exit 0 || exit 1
+fi
