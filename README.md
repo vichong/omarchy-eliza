@@ -4,9 +4,27 @@
 
 Talk to ELIZA, the 1966 program that started it all, from the Omarchy bar.
 
-A homage to the first thing that ever felt like AI to me, which I met on a
-Macintosh in 1985. On an OS that ships with agents, ELIZA gets a "Thinking…"
-panel too. It is four lines of pattern matching, and it always was.
+A homage to the first thing that ever felt like AI to me. On an agentic OS, the
+first chatbot belongs in the bar too.
+
+## Why I made this
+
+I met ELIZA on a Macintosh in 1985, when I was about ten. For the first few
+exchanges I was sure there was something intelligent in there. Then the seams
+showed, which was its own lesson. I found her again later as a DOS program, and
+again on one of the early Palm Pilots, where she lived in my pocket.
+
+Around the turn of the century Douglas Adams, author of The Hitchhiker's Guide
+to the Galaxy, gave a talk at the Australian Technology Park in Sydney. Part of
+the way through he brought up ELIZA, the program that gives you the illusion of
+talking to a mind. I realised my Palm Pilot, with ELIZA on it, was sitting in
+the car. When the talk ended and people lined up to meet him, I bolted out,
+grabbed it, and came back to show him. I think he was genuinely surprised to be
+handed, on a handheld computer, the program he had just been talking about.
+
+Decades later I run Omarchy, an agentic OS. This is my thank-you to the program
+that made a ten-year-old believe, for a minute or two, that the computer was
+listening.
 
 ## What is in here
 
