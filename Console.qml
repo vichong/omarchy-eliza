@@ -234,7 +234,7 @@ FocusScope {
                 AboutHeading { text: "The code" }
                 AboutText { text: "The original source was found in Weizenbaum’s papers at MIT in 2021 and released CC0 by his estate. It has since run again on a restored CTSS (ELIZA Reanimated, 2025), which is how the teaching mode came back to light." }
                 AboutHeading { text: "Why this exists" }
-                AboutText { text: "In May 1999 I ran out of a Douglas Adams talk in Sydney to fetch my Palm III from the car, because he had just described ELIZA on stage and she was on it. He was amazed; he had no idea she had been ported to a handheld. I had felt the same in front of an Apple Mac in the 80s, and I feel it again now, running Omarchy alongside today’s AI models. This is my homage to the matriarch of them all. The full story is in the README. — Vic" }
+                AboutText { text: "In 1999 I ran out of a Douglas Adams talk in Sydney to fetch my Palm III from the car. He had just described ELIZA on stage, and she was on it. He seemed to have no idea she had been ported to a handheld, and he was amazed. I knew the feeling from an Apple Mac in the 80s, and I still have it, running Omarchy next to today’s AI models. This is my homage to the matriarch of them all. The full story is in the README. — Vic" }
                 AboutHeading { text: "Credits" }
                 Repeater {
                   model: [

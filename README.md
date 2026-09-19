@@ -8,36 +8,27 @@ On an agentic OS, the first chatbot belongs in the bar too.
 
 ## Why I made this
 
-In May 1999 I ran out of a Douglas Adams talk to get something from my car.
+In 1999 I ran out of a Douglas Adams talk to get something from my car.
 
-He was in Sydney, at the Australian Technology Park, and most of the room knew
-him as the author of The Hitchhiker's Guide to the Galaxy. But he was just as
-much a technology visionary, and part of the way through he brought up ELIZA:
-the program from 1966 that gives you the illusion of talking to a mind.
+He was in Sydney, speaking at the Australian Technology Park. Most of the room
+knew him as the author of The Hitchhiker's Guide to the Galaxy, but he was just
+as much a technology visionary. Part of the way through he brought up ELIZA,
+the 1966 program that gives you the illusion of talking to a mind.
 
-She was in my car.
-
-I had a Palm III then, and ELIZA lived on it.
+She was in my car. I had a Palm III then, and ELIZA lived on it.
 
 When the talk ended and people lined up to meet him, I bolted out, grabbed that
-PalmPilot, and came back to show him. He was amazed. He told me he had no idea
-ELIZA had been ported to a handheld, and this was the dawn of handheld
-computing: there in his hand was the program he had just been talking about.
+PalmPilot and came back to show him. This was the dawn of handheld computing,
+and he seemed to have no idea ELIZA had been ported to a handheld. Now the
+program he had just been talking about was sitting in his hand. He was amazed.
 
-That moment stayed with me: someone who thought harder than most about where
-computers were going, reaching back to a program from 1966 to make his point,
-and me standing there with it in my hand.
+I knew the feeling. Before the Palm she was a DOS program on my PC. Before
+that, on an Apple Mac in the 80s, she was the first thing that ever felt like
+AI to me. I was a kid, and for the first few exchanges I was sure there was
+something intelligent in there.
 
-It had been in my hands, one way or another, for years. On the Palm she lived
-in my pocket. Before that she was a DOS program. And before that, on an Apple
-Mac in the 80s, she was the first thing that ever felt like AI to me. I was
-amazed. For the first few exchanges I was sure there was something intelligent
-in there.
-
-That is the thread for me: amazement. A kid in front of a Mac. Douglas Adams
-with a PalmPilot in his hand. And now me, running Omarchy, an agentic OS,
-watching frontier and open-weight models do things nobody in that room in 1999
-would have believed. I am still just amazed.
+These days I run Omarchy, an agentic OS, and I watch frontier and open-weight
+models do things that kid would never have believed. I am still amazed.
 
 So this is my homage to the matriarch of them all.
 
