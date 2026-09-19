@@ -122,7 +122,7 @@ FocusScope {
           }
         }
       }
-      // This fixed middle region keeps the input and footer still across tabs.
+      // Settings and About take the whole panel; the input line and footer belong to the chat.
       Item {
         Layout.fillWidth: true; Layout.fillHeight: true
         Item {
@@ -284,8 +284,7 @@ FocusScope {
         }
       }
       Rectangle {
-        opacity: root.tab === "chat" ? 1 : 0
-        enabled: root.tab === "chat"
+        visible: root.tab === "chat"
         color: "transparent"; border.color: root.screenBorder
         Layout.preferredHeight: Style.space(30)
         Layout.fillWidth: true
@@ -327,7 +326,7 @@ FocusScope {
         id: footer
         Layout.fillWidth: true
         Layout.preferredHeight: Math.max(footerHint.implicitHeight, turnLabel.implicitHeight, traceRow.implicitHeight)
-        opacity: root.tab === "chat" ? 1 : 0
+        visible: root.tab === "chat"
         // 1966 only: the trace is Hay's modern look inside the machine, so it is opt-in.
         Row {
           id: traceRow
