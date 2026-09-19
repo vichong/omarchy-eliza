@@ -89,6 +89,8 @@ words and spacing, and shows its memory count instead of a trace.
   reply starts expanded. Long traces scroll inside a bounded inset.
 - Ctrl+N starts over; Ctrl+1/2 select 1966/1985.
 - Ctrl+, opens settings; F1 opens About. The tabs return to chat.
+- Ctrl+R, or the power button in the header, restarts the machine: a fresh
+  conversation behind the full boot sequence, even with boot sequences off.
 - Ctrl+Q quits: the panel closes and the next open starts a fresh session,
   boot sequence included. The bar mark stays.
 - After Hayden ends a conversation, Enter starts another.
@@ -155,6 +157,7 @@ omarchy-shell eliza about
 omarchy-shell eliza newConversation
 omarchy-shell eliza era 1985
 omarchy-shell eliza thoughts
+omarchy-shell eliza reboot
 omarchy-shell eliza demo
 omarchy-shell eliza copy
 omarchy-shell eliza say "Men are all alike."

@@ -35,6 +35,7 @@ Ui.Panel {
     function newConversation(): void { if (root.service) root.service.newConversation() }
     function era(name: string): void { if (root.service) root.service.setEra(name) }
     function thoughts(): void { if (root.service) root.service.toggleThoughts() }
+    function reboot(): void { root.summon("chat"); if (root.service) root.service.reboot() }
     function demo(): void { root.summon("chat"); if (root.service) root.service.startDemo() }
     function copy(): void { if (root.service) root.service.copyTranscript() }
     function say(text: string): string { return root.service ? root.service.say(text) : "" }

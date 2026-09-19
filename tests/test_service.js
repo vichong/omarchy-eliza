@@ -12,7 +12,7 @@ const s = {
   directoryReady: true, configFile: {setText: text => saves.push(text)},
   doctorSource: fs.readFileSync(path.join(__dirname, '../scripts/doctor-1966.txt'), 'utf8'),
   haydenSource: fs.readFileSync(path.join(__dirname, '../scripts/hayden-1985.txt'), 'utf8'),
-  error: '', configError: '', liveReady: false, clockReady: false,
+  error: '', configError: '', forceBoot: false, liveReady: false, clockReady: false,
   conversation: {
     get count() { return entries.length },
     append: entry => entries.push(entry), clear: () => { entries.length = 0 },
@@ -129,4 +129,11 @@ s.startDemo(); s.demoTick(); s.overlayOpen = false; s.demoTick()
 assert(!s.demo, 'closing the panel stops the demo')
 s.overlayOpen = true; s.startDemo(); s.setEra('1985')
 assert(!s.demo, 'an era switch stops the demo')
+// The power button plays the boot even when boot sequences are switched off.
+Object.assign(s, {forceBoot: false, liveReady: false, clockReady: false, overlayOpen: true})
+s.config = C.merge(s.config, {boot: false})
+s.reboot()
+assert(s.forceBoot && s.booting && entries.length === 0, 'reboot forces the boot with boot sequences off')
+s.finishBoot()
+assert(!s.forceBoot && !s.booting && entries.at(-1).role === 'eliza', 'forced boot ends in a greeting')
 done('service')

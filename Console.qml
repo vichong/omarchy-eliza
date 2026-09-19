@@ -31,6 +31,7 @@ FocusScope {
     // Closed first, so the boot waits for the next open instead of playing unseen.
     if (service) { service.overlayOpen = false; service.newConversation(true) }
   }
+  function reboot() { tab = "chat"; input.text = ""; draft = ""; historyIndex = -1; if (service) service.reboot(); focusInput() }
   onOpenedChanged: focusInput()
   onTabChanged: focusInput()
   function setEra(id) { if (service) service.setEra(id); root.activeInput.text = ""; historyIndex = -1; focusInput() }
@@ -49,6 +50,7 @@ FocusScope {
     else if (service && service.booting) { service.finishBoot() }
     else if (event.key === Qt.Key_Escape) { if (service && service.typing) service.finishTyping(); else dismiss() }
     else if (ctrl && event.key === Qt.Key_Q) quit()
+    else if (ctrl && event.key === Qt.Key_R) reboot()
     else if (ctrl && event.key === Qt.Key_T && service) service.toggleThoughts()
     else if (ctrl && event.key === Qt.Key_N && service) { service.newConversation(); root.activeInput.text = ""; historyIndex = -1 }
     else if (ctrl && event.key === Qt.Key_1) setEra("1966")
@@ -104,6 +106,13 @@ FocusScope {
           Text { text: "ELIZA"; color: root.ink; font.family: Style.font.family; font.pixelSize: Style.font.heading; font.bold: true }
           Item { Layout.fillWidth: true }
           EraSwitch {}
+          Ui.Button {
+            Layout.preferredWidth: Style.space(22); Layout.preferredHeight: Style.space(22)
+            iconText: "\uf011"; tooltipText: "Restart (Ctrl+R)"
+            foreground: hot || activeFocus ? root.ink : root.muted
+            horizontalPadding: 0; verticalPadding: 0; focusable: true
+            onClicked: root.reboot()
+          }
           Ui.Button {
             Layout.preferredWidth: Style.space(22); Layout.preferredHeight: Style.space(22)
             iconText: root.tab === "chat" ? "" : ""

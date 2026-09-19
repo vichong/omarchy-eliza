@@ -152,10 +152,17 @@ QtObject {
     if (overlayOpen && ready && conversation.count === 0) startBoot()
     else if (!overlayOpen && booting) finishBoot()
   }
+  // The power button always shows the boot, even with boot sequences switched off.
+  property bool forceBoot: false
+  function reboot() {
+    if (!ready) return
+    stopDemo(); forceBoot = true
+    newConversation(true)
+  }
   function startBoot() {
     bootRequested = true
     if (!ready) return
-    if (!boot) { finishBoot(); return }
+    if (!boot && !forceBoot) { finishBoot(); return }
     // An era switch while the overlay is closed leaves the transcript empty so
     // the boot plays on the next open, where someone can actually watch it.
     if (!overlayOpen) return
@@ -169,7 +176,7 @@ QtObject {
     bootTimer.restart()
   }
   function finishBoot() {
-    bootState = "idle"; bootRequested = false
+    bootState = "idle"; bootRequested = false; forceBoot = false
     // The login stays at the top of the transcript, whole even when skipped.
     if (ready && conversation.count === 0 && bootLines.length) append("boot", bootLines.join("\n"), "", 0)
     bootText = ""; bootLines = []
@@ -241,7 +248,7 @@ QtObject {
     config = parsed.config
     configError = tooLarge ? "config.json is too large (limit 65536 bytes)" : parsed.error
     configLoaded = true
-    if (!boot && booting) finishBoot()
+    if (!boot && booting && !forceBoot) finishBoot()
     if (ready && oldEra !== era) newConversation(true)
     else initialize()
   }
@@ -259,7 +266,7 @@ QtObject {
     config = ConfigStore.merge(config, patch)
     if (directoryReady) configFile.setText(ConfigStore.serialize(config))
     else configDirty = true
-    if (key === "boot" && !boot && booting) finishBoot()
+    if (key === "boot" && !boot && booting && !forceBoot) finishBoot()
   }
   function setEra(id) {
     var next = Model.eraFor(id)
