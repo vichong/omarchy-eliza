@@ -6,6 +6,13 @@ Talk to ELIZA, the 1966 program that started it all, from the Omarchy bar.
 
 On an agentic OS, the first chatbot belongs in the bar too.
 
+| 1966 · CTSS teletype | 1985 · Macintosh |
+|---|---|
+| ![ELIZA in the Omarchy bar, 1966 era: the DOCTOR script on a green phosphor screen](docs/screenshot-1966.png) | ![ELIZA in the Omarchy bar, 1985 era: Charles Hayden's Macintosh Eliza window](docs/screenshot-1985.png) |
+
+Both show the conversation printed in Weizenbaum's 1966 paper, answered live by
+each era's own engine.
+
 ## Why I made this
 
 In 1999 I ran out of a Douglas Adams talk to get something from my car.
