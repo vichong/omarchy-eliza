@@ -21,10 +21,10 @@ to everyone else why computers and the internet were about to change
 everything. Part of the way through he brought up ELIZA, the program that gives
 you the illusion of talking to a mind.
 
-I realised my Palm III, with ELIZA on it, was sitting in the car. When the talk
-ended and people lined up to meet him, I bolted out, grabbed it, and came back
-to show him. I think he was genuinely surprised to be handed, on a handheld
-computer, the program he had just been talking about.
+I realised she was out in the car, on that Palm. When the talk ended and people
+lined up to meet him, I bolted out, grabbed it, and came back to show him. I
+think he was genuinely surprised to be handed, on a handheld computer, the
+program he had just been talking about.
 
 That moment stayed with me: someone who thought harder than most about where
 computers were going, reaching back to a program from 1966 to make his point,
@@ -34,8 +34,8 @@ The illusion he described has since grown into frontier and open-weight models
 that can hold the conversation ELIZA could only gesture at. I now run Omarchy,
 an agentic OS, where those models are a key part of the system. ELIZA is the
 matriarch of that lineage, illusion and all, so I had to put her there too: the
-one who started the conversation, and the one who made a ten-year-old at a
-Macintosh believe, for a minute or two, that the computer was listening.
+one who started the conversation, and the one who made a kid at a Macintosh
+believe, for a minute or two, that the computer was listening.
 
 ## What is in here
 
