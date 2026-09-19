@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
 <!-- ELIZA never had a logo. This one is her name on a phosphor tube, set in VT323
-     (fonts/VT323-Regular.ttf, SIL OFL) with the plugin's block cursor. Render with
+     (fonts/VT323-Regular.ttf, SIL OFL). Render with
      rsvg-convert and a fontconfig file that lists fonts/; see README, Development. -->
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -26,8 +26,7 @@
   <filter id="soft"><feGaussianBlur stdDeviation="0.7"/></filter>
   <clipPath id="screen"><rect x="84" y="118" width="424" height="252" rx="26"/></clipPath>
   <g id="name">
-    <text x="118" y="292" font-family="VT323" font-size="150" letter-spacing="2">ELIZA</text>
-    <rect x="434" y="206" width="50" height="86"/>
+    <text x="296" y="292" text-anchor="middle" font-family="VT323" font-size="150" letter-spacing="2">ELIZA</text>
   </g>
 </defs>
 <rect width="1280" height="640" fill="url(#bg)"/>
