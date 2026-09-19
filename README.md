@@ -114,7 +114,7 @@ Communication Between Man And Machine", Communications of the ACM 9(1), January
 nothing else. It is a real session: the
 patient's fifteen lines are typed into the live engine, which answers for
 itself, word for word as published in the 1966 era. Any key takes over and the
-conversation is yours from there. With **Play the 1966 conversation when idle**
+conversation is yours from there. With **Play demo when idle**
 on (the default), an untouched, empty conversation starts the demo after 30
 seconds. Closing the panel or switching era stops it.
 

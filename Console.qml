@@ -172,7 +172,7 @@ FocusScope {
                   EraSwitch {}
                 }
                 Repeater {
-                  model: [{key: "boot", label: "Play boot sequences"}, {key: "demoIdle", label: "Play the 1966 conversation when idle"}, {key: "blink", label: "Blink bar mark"}, {key: "showLabel", label: "Show ELIZA label"}, {key: "macPaper", label: "1985 black on white"}]
+                  model: [{key: "boot", label: "Play boot sequences"}, {key: "demoIdle", label: "Play demo when idle"}, {key: "blink", label: "Blink bar mark"}, {key: "showLabel", label: "Show ELIZA label"}, {key: "macPaper", label: "1985 black on white"}]
                   Ui.Toggle {
                     required property var modelData
                     width: settingsColumn.width; height: Style.space(30)
@@ -212,21 +212,6 @@ FocusScope {
                 Caption { text: "Quit ends the conversation and closes ELIZA. The bar mark stays." }
                 Caption { visible: text !== ""; text: root.service ? root.service.configError : "" }
                 Caption { visible: text !== ""; text: root.service ? root.service.copyStatus : "" }
-                // Version comes from the manifest so it never drifts from the tag.
-                Row {
-                  width: settingsColumn.width
-                  spacing: Style.spacing.xs
-                  Caption { width: implicitWidth; text: "ELIZA v" + (root.service && root.service.manifest && root.service.manifest.version ? root.service.manifest.version : "?") + " \u00b7" }
-                  Caption {
-                    id: repoLink
-                    readonly property string url: "https://github.com/vichong/omarchy-eliza"
-                    width: implicitWidth; text: "github.com/vichong/omarchy-eliza"
-                    color: repoHover.hovered ? root.ink : root.muted
-                    font.underline: repoHover.hovered
-                    HoverHandler { id: repoHover; cursorShape: Qt.PointingHandCursor }
-                    TapHandler { onTapped: Qt.openUrlExternally(repoLink.url) }
-                  }
-                }
               }
               Column {
                 id: aboutColumn
@@ -277,6 +262,22 @@ FocusScope {
                   onLinkActivated: function(link) { Qt.openUrlExternally(link) }
                 }
                 Item { width: 1; height: Style.space(4) }
+              }
+            }
+            Rectangle { Layout.fillWidth: true; Layout.preferredHeight: 1; color: root.screenBorder; opacity: 0.6 }
+            // Version comes from the manifest so it never drifts from the tag.
+            Row {
+              Layout.fillWidth: true
+              spacing: Style.spacing.xs
+              Caption { width: implicitWidth; text: "ELIZA v" + (root.service && root.service.manifest && root.service.manifest.version ? root.service.manifest.version : "?") + " \u00b7" }
+              Caption {
+                id: repoLink
+                readonly property string url: "https://github.com/vichong/omarchy-eliza"
+                width: implicitWidth; text: "github.com/vichong/omarchy-eliza"
+                color: repoHover.hovered ? root.ink : root.muted
+                font.underline: repoHover.hovered
+                HoverHandler { id: repoHover; cursorShape: Qt.PointingHandCursor }
+                TapHandler { onTapped: Qt.openUrlExternally(repoLink.url) }
               }
             }
           }
