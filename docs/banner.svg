@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+<!-- ELIZA never had a logo. This one is her name on a phosphor tube, set in VT323
+     (fonts/VT323-Regular.ttf, SIL OFL) with the plugin's block cursor. Render with
+     rsvg-convert and a fontconfig file that lists fonts/; see README, Development. -->
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#171a21"/><stop offset="1" stop-color="#0f1116"/>
+  </linearGradient>
+  <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#0c3d1e"/><stop offset="0.35" stop-color="#5dff8a"/><stop offset="0.7" stop-color="#ffb347"/><stop offset="1" stop-color="#6b4412"/>
+  </linearGradient>
+  <radialGradient id="tube" cx="0.5" cy="0.5" r="0.75">
+    <stop offset="0" stop-color="#0b1a10"/><stop offset="0.6" stop-color="#050b07"/><stop offset="1" stop-color="#010201"/>
+  </radialGradient>
+  <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.72">
+    <stop offset="0.55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.78"/>
+  </radialGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity="0.07"/><stop offset="0.35" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="#000" fill-opacity="0.42"/>
+  </pattern>
+  <filter id="haze" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="bloom" x="-10%" y="-20%" width="120%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="0.7"/></filter>
+  <clipPath id="screen"><rect x="84" y="118" width="424" height="252" rx="26"/></clipPath>
+  <g id="name">
+    <text x="118" y="292" font-family="VT323" font-size="150" letter-spacing="2">ELIZA</text>
+    <rect x="434" y="206" width="50" height="86"/>
+  </g>
+</defs>
+<rect width="1280" height="640" fill="url(#bg)"/>
+<rect x="0" y="0" width="1280" height="6" fill="url(#rule)"/>
+<!-- the tube -->
+<rect x="74" y="108" width="444" height="272" rx="34" fill="#1d212a"/>
+<rect x="84" y="118" width="424" height="252" rx="26" fill="url(#tube)"/>
+<g clip-path="url(#screen)">
+  <use href="#name" fill="#2fbf5e" filter="url(#haze)" opacity="0.9"/>
+  <use href="#name" fill="#5dff8a" filter="url(#bloom)" opacity="0.85"/>
+  <use href="#name" fill="#c9ffd9" filter="url(#soft)"/>
+  <rect x="84" y="118" width="424" height="252" fill="url(#scan)"/>
+  <rect x="84" y="118" width="424" height="252" fill="url(#vignette)"/>
+  <rect x="84" y="118" width="424" height="252" fill="url(#glass)"/>
+</g>
+<text x="576" y="265" text-anchor="middle" font-family="JetBrainsMono Nerd Font, JetBrains Mono, monospace" font-size="64" fill="#5c6270">×</text>
+<g transform="translate(640,187) scale(0.40)" fill="#e6e8ec"><path clip-rule="evenodd" d="m720 120h-15v15h-14.998v14.999l-60.002.001v15.002l90-.002v.002h.002l-.002 89.998h-15v15h-13v15h-17v-89.998h-45v90l-45-.002v-89.998h-14.998v-30h14.998v-15.002h-14.998v-30.001h14.998v-75h15v-14.997h15v-15.002h105.002zm-90-.001h45v-74.997h-45z" fill-rule="evenodd"/><path clip-rule="evenodd" d="m105 30.002h15v14.997h15v180.001h-15v15h-15v15.002h-75v-15.002h-15v-15h-15v-180.001h15v-14.997h15v-15.002h75zm-60 194.998h45v-179.998h-45z" fill-rule="evenodd"/><path d="m300 15h60v15h15v14.999h15v180.001h-15v15h-15v15h-15l-.004-209.998h-44.994v-.002h-.002v210.002h-45v-210h-44.998v179.997h-.002v30.003h-15v-15.002h-15v-15h-14.998v-180.001h14.998v-14.999h15v-15h60v-15h45z"/><path clip-rule="evenodd" d="m555 225h-15v15h-15v15h-15v-105.001l-44.998.001v105.002h-45.002v-105.002h-15v-30.001h15v-75h15.002v-14.997h15v-15.002h105zm-89.998-105.001h44.998v-74.997h-44.998z" fill-rule="evenodd"/><path d="m885 75h-15v15h-15v15h-15v-59.998h-45v179.998h45v-59.998h15v14.997h15v15.001h15v30h-15v15h-15v15.002l-105-.002v-210.001h14.998v-14.997h15.002v-15.002h105z"/><path d="m960 119.999h45v-104.999h15v15h15v14.999h15v75.001h15v15h-15v90h-15v15h-15v15h-15v-105h-45v105.002l-45-.002v-105h-30v-15h15v-15.001h15v-75h15v-14.997h15v-15.002h15z"/><path d="m1125 119.999h45v-104.999h15v15h15v15h15v180h-15v15h-15v15.002l-75-.002v-15h-15v-15h-15v-45.001h15v-14.997-.002h30v60h45v-75h-90v-105.001h15v-14.997h15v-15.002h15z"/></g>
+<text x="640" y="450" text-anchor="middle" font-family="JetBrainsMono Nerd Font, JetBrains Mono, monospace" font-size="30" fill="#e6e8ec">Talk to ELIZA, the first chatbot, from the Omarchy bar</text>
+<text x="640" y="498" text-anchor="middle" font-family="JetBrainsMono Nerd Font, JetBrains Mono, monospace" font-size="22" fill="#8a919e">1966 CTSS teletype · 1985 Macintosh · the original conversation, replayed live</text>
+<text x="640" y="580" text-anchor="middle" font-family="JetBrainsMono Nerd Font, JetBrains Mono, monospace" font-size="16" fill="#4f5563">community plugin · omarchy plugin add https://github.com/vichong/omarchy-eliza.git</text>
+<text x="640" y="606" text-anchor="middle" font-family="JetBrainsMono Nerd Font, JetBrains Mono, monospace" font-size="16" fill="#4f5563">not affiliated with MIT, Apple or Omarchy · engines by Anthony Hay (CC0) and Charles Hayden · no network, nothing saved</text>
+</svg>

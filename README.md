@@ -1,5 +1,7 @@
 # ELIZA for Omarchy
 
+![ELIZA × Omarchy — talk to ELIZA, the first chatbot, from the Omarchy bar](docs/banner.png)
+
 Talk to ELIZA, the 1966 program that started it all, from the Omarchy bar.
 
 A homage to the first thing that ever felt like AI to me, which I met on a
@@ -170,6 +172,14 @@ and any configuration/script error.
 ```sh
 for test in tests/test_*.js; do node "$test"; done
 PATH=/usr/lib/qt6/bin:$PATH QML_IMPORT_PATH=/usr/share/omarchy/shell qmllint Service.qml Console.qml Panel.qml Era*.qml
+```
+
+`docs/banner.png` is rendered from `docs/banner.svg`, which sets ELIZA's name in
+the bundled VT323, so point fontconfig at `fonts/` when rendering:
+
+```sh
+printf '<?xml version="1.0"?><fontconfig><dir>%s/fonts</dir><include>/etc/fonts/fonts.conf</include></fontconfig>' "$PWD" > /tmp/eliza-fonts.conf
+FONTCONFIG_FILE=/tmp/eliza-fonts.conf rsvg-convert -w 1600 docs/banner.svg -o docs/banner.png
 ```
 
 Use the Qt 6 linter: `/usr/bin/qmllint` on this machine belongs to Qt 5 and
