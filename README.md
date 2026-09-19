@@ -9,10 +9,10 @@ first chatbot belongs in the bar too.
 
 ## Why I made this
 
-I met ELIZA on an Apple Mac in the 80s, when I was about ten. For the first few
-exchanges I was sure there was something intelligent in there. Then the seams
-showed, which was its own lesson. I found her again later as a DOS program, and
-again on a Palm III, where she lived in my pocket.
+I met ELIZA on an Apple Mac in the 80s. For the first few exchanges I was sure
+there was something intelligent in there. Then the seams showed, which was its
+own lesson. I found her again later as a DOS program, and again on a Palm III,
+where she lived in my pocket.
 
 In May 1999 Douglas Adams gave a talk at the Australian Technology Park in
 Sydney. Most people know him as the author of The Hitchhiker's Guide to the
