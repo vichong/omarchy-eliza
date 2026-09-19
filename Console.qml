@@ -234,7 +234,7 @@ FocusScope {
                 AboutHeading { text: "The code" }
                 AboutText { text: "The original source was found in Weizenbaum’s papers at MIT in 2021 and released CC0 by his estate. It has since run again on a restored CTSS (ELIZA Reanimated, 2025), which is how the teaching mode came back to light." }
                 AboutHeading { text: "Why this exists" }
-                AboutText { text: "I met ELIZA on a Macintosh in 1985, aged about ten, and for a few exchanges I was sure she was intelligent. Years later I carried her on a Palm Pilot, and once ran to the car to fetch it so I could show Douglas Adams, author of The Hitchhiker’s Guide to the Galaxy, the program he had just described on stage in Sydney. This is my thank-you to her. The full story is in the README. — Vic" }
+                AboutText { text: "I met ELIZA on a Macintosh in 1985, aged about ten, and for a few exchanges I was sure she was intelligent. The 1985 era here is that machine as I remember it. Later I carried her on a Palm III, and in May 1999 ran to the car to fetch it so I could show Douglas Adams, author of The Hitchhiker’s Guide to the Galaxy, the program he had just described on stage in Sydney. AI agents are now a key part of Omarchy, and ELIZA is their grandmother, so she had to be here too. The full story is in the README. — Vic" }
                 AboutHeading { text: "Credits" }
                 Repeater {
                   model: [
