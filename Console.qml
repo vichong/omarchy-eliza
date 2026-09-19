@@ -203,6 +203,21 @@ FocusScope {
                 Caption { text: "Quit ends the conversation and closes ELIZA. The bar mark stays." }
                 Caption { visible: text !== ""; text: root.service ? root.service.configError : "" }
                 Caption { visible: text !== ""; text: root.service ? root.service.copyStatus : "" }
+                // Version comes from the manifest so it never drifts from the tag.
+                Row {
+                  width: settingsColumn.width
+                  spacing: Style.spacing.xs
+                  Caption { width: implicitWidth; text: "ELIZA v" + (root.service && root.service.manifest && root.service.manifest.version ? root.service.manifest.version : "?") + " \u00b7" }
+                  Caption {
+                    id: repoLink
+                    readonly property string url: "https://github.com/vichong/omarchy-eliza"
+                    width: implicitWidth; text: "github.com/vichong/omarchy-eliza"
+                    color: repoHover.hovered ? root.ink : root.muted
+                    font.underline: repoHover.hovered
+                    HoverHandler { id: repoHover; cursorShape: Qt.PointingHandCursor }
+                    TapHandler { onTapped: Qt.openUrlExternally(repoLink.url) }
+                  }
+                }
               }
               Column {
                 id: aboutColumn
