@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.vichong.eliza",
   "name": "ELIZA",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Vic Hong",
   "license": "MIT",
   "description": "Talk to ELIZA, the 1966 program that started it all, from the Omarchy bar. A homage to the first thing that ever felt like AI.",

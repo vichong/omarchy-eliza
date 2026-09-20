@@ -220,6 +220,11 @@ printf '<?xml version="1.0"?><fontconfig><dir>%s/fonts</dir><include>/etc/fonts/
 FONTCONFIG_FILE=/tmp/eliza-fonts.conf rsvg-convert -w 1600 docs/banner.svg -o docs/banner.png
 ```
 
+The banner is also the GitHub social preview. The screenshots in `docs/` are
+full-desktop captures on an empty workspace with default settings, scaled to
+1600×1000, and `preview.png` (the plugin directory's listing image) is a copy of
+`docs/screenshot-1966.png`: replace both together.
+
 Use the Qt 6 linter: `/usr/bin/qmllint` on this machine belongs to Qt 5 and
 exits 255 on the modern QML syntax without diagnostics. The Qt 6 linter
 reports shell import/type-metadata warnings but completes successfully.

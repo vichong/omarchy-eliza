@@ -217,6 +217,7 @@ FocusScope {
                 id: aboutColumn
                 width: settingsView.width; visible: root.tab === "about"
                 spacing: Style.spacing.md
+                AboutHeading { text: "The program" }
                 AboutText { text: "ELIZA is Joseph Weizenbaum’s 1966 program for studying conversation between people and computers. Her DOCTOR script plays a therapist by matching patterns in what you type and handing your own words back." }
                 // The warning is the point of the homage, so it gets the one emphasis on the page.
                 Row {
