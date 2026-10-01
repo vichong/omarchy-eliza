@@ -24,13 +24,8 @@ FocusScope {
   function focusInput() { Qt.callLater(function() { if (root.opened) { if (root.tab === "chat" && root.activeInput.enabled) root.activeInput.forceActiveFocus(); else catcher.forceActiveFocus() } }) }
   function show(name) { tab = name === "settings" || name === "about" ? name : "chat"; focusInput() }
   function dismiss() { closeRequested() }
-  // Quit ends the session: the next open starts over, boot sequence included.
-  function quit() {
-    dismiss()
-    input.text = ""; draft = ""; historyIndex = -1
-    // Closed first, so the boot waits for the next open instead of playing unseen.
-    if (service) { service.overlayOpen = false; service.newConversation(true) }
-  }
+  // Use Omarchy's persistent disable operation; it unloads this panel/service.
+  function quit() { if (service) service.quit() }
   function reboot() { tab = "chat"; input.text = ""; draft = ""; historyIndex = -1; if (service) service.reboot(); focusInput() }
   onOpenedChanged: focusInput()
   onTabChanged: focusInput()
@@ -47,9 +42,10 @@ FocusScope {
     if (idle.running) idle.restart()
     // Any key takes the conversation over from the demo, and is not typed into it.
     if (service && service.demo) { service.stopDemo(); root.activeInput.text = "" }
+    // Quit must not be consumed as a boot-skip key.
+    else if (ctrl && event.key === Qt.Key_Q) quit()
     else if (service && service.booting) { service.finishBoot() }
     else if (event.key === Qt.Key_Escape) { if (service && service.typing) service.finishTyping(); else dismiss() }
-    else if (ctrl && event.key === Qt.Key_Q) quit()
     else if (ctrl && event.key === Qt.Key_R) reboot()
     else if (ctrl && event.key === Qt.Key_T && service) service.toggleThoughts()
     else if (ctrl && event.key === Qt.Key_N && service) { service.newConversation(); root.activeInput.text = ""; historyIndex = -1 }
@@ -209,7 +205,7 @@ FocusScope {
                   Ui.Button { text: "Play demo"; fontSize: Style.font.caption; height: Style.space(30); foreground: root.ink; bordered: true; focusable: true; onClicked: { root.tab = "chat"; if (root.service) root.service.startDemo() } }
                   Ui.Button { text: "Quit ELIZA"; fontSize: Style.font.caption; height: Style.space(30); foreground: root.ink; bordered: true; focusable: true; onClicked: root.quit() }
                 }
-                Caption { text: "Quit ends the conversation and closes ELIZA. The bar mark stays." }
+                Caption { text: "Quit disables ELIZA and removes it from the bar. Re-enable via Omarchy’s Enable Plugin menu." }
                 Caption { visible: text !== ""; text: root.service ? root.service.configError : "" }
                 Caption { visible: text !== ""; text: root.service ? root.service.copyStatus : "" }
               }
@@ -363,10 +359,10 @@ FocusScope {
       }
     }
   }
-  // Consume the skip click before any control can act on it.
+  // Consume chat's skip click, but leave settings actions (including Quit) usable.
   MouseArea {
     anchors.fill: parent; z: 100
-    visible: !!root.service && root.service.booting
+    visible: root.tab === "chat" && !!root.service && root.service.booting
     onClicked: { root.service.finishBoot(); root.focusInput() }
   }
   Component { id: ttyEra; EraTeletype { model: root.service.conversation; thoughtsOn: root.service.thoughts; typing: root.service.typing; bootText: root.service.bootText; booting: root.service.booting; phosphor: root.service.phosphor } }

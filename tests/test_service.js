@@ -32,6 +32,14 @@ for (const match of source.matchAll(/^  readonly property (?:string|bool|int) (\
 }
 const methods = source.match(/^  function \w+\([^\n]*\)(?: \{[^\n]*\}| \{\n[\s\S]*?^  \})/gm)
 vm.runInContext(methods.join('\n'), s)
+const detached = []
+s.Quickshell = {execDetached: command => detached.push(command)}
+s.quit()
+equal(detached, [['sh', '-c', 'omarchy plugin disable io.github.vichong.eliza || omarchy-notification-send "Could not disable ELIZA" "Try Omarchy\'s Disable Plugin menu."']], 'Quit launches supported plugin disable detached with failure notification, not shell quit')
+const panelSource = fs.readFileSync(path.join(__dirname, '../Panel.qml'), 'utf8')
+const panelQuit = panelSource.match(/^  function quit\(\) \{[^\n]*\}/m)[0]
+vm.runInNewContext(panelQuit + '\nquit()', {eliza: {quit: () => s.quit()}})
+equal(detached.length, 2, 'Panel IPC Quit delegates to the same disable path')
 s.newConversation()
 equal(s.scriptId, 'doctor-1966', 'default era is 1966 with Hay')
 equal(s.say('Men are all alike.'), 'IN WHAT WAY', '1966 preserves uppercase')

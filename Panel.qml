@@ -15,7 +15,7 @@ Ui.Panel {
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
   function summon(tab) { eliza.show(tab); open() }
-  function quit() { close(); if (service) { service.overlayOpen = false; service.newConversation(true) } }
+  function quit() { eliza.quit() }
   onOpenedChanged: if (service) service.overlayOpen = opened
   Component.onDestruction: if (service) service.overlayOpen = false
   Timer {

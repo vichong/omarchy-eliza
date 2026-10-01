@@ -273,6 +273,11 @@ QtObject {
     if (next === era) return
     stopDemo(); setSetting("era", next); newConversation(true)
   }
+  // Detached: normal plugin disable unloads this Service before the CLI exits.
+  // This is the supported CLI route to the same operation as Disable Plugin.
+  function quit() {
+    Quickshell.execDetached(["sh", "-c", "omarchy plugin disable io.github.vichong.eliza || omarchy-notification-send \"Could not disable ELIZA\" \"Try Omarchy's Disable Plugin menu.\""])
+  }
   function toggleThoughts() { setSetting("thoughts", !thoughts) }
   function append(role, text, trace, elapsed) {
     while (conversation.count >= Model.MAX_ROWS) {

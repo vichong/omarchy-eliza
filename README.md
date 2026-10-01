@@ -126,15 +126,18 @@ words and spacing, and shows its memory count instead of a trace.
 - Ctrl+, opens settings; F1 opens About. The tabs return to chat.
 - Ctrl+R, or the power button in the header, restarts the machine: a fresh
   conversation behind the full boot sequence, even with boot sequences off.
-- Ctrl+Q quits: the panel closes and the next open starts a fresh session,
-  boot sequence included. The bar mark stays.
+- Ctrl+Q quits by disabling the ELIZA plugin, removing it from the bar and
+  unloading its service. Re-enable it through Omarchy’s **Enable Plugin** menu.
 - After Hayden ends a conversation, Enter starts another.
 
 Settings includes **New conversation** and **Copy transcript** (uses `wl-copy`).
 Conversation text stays in memory and disappears when the shell restarts.
 Nothing is sent over the network.
 
-**Quit ELIZA** does the same as Ctrl+Q.
+**Quit ELIZA** does the same as Omarchy’s **Disable Plugin** menu: it runs
+`omarchy plugin disable io.github.vichong.eliza`. ELIZA stays off across shell
+restarts until you re-enable it. A failed disable shows a notification rather
+than silently doing nothing. Closing the panel with Escape does not disable it.
 
 ### Demo
 
@@ -153,8 +156,10 @@ seconds. Closing the panel or switching era stops it.
 
 ## Turning ELIZA off and on
 
-ELIZA loads with the Omarchy shell for as long as it is enabled. There is no
-in-app off switch; use the Omarchy plugin commands (or ask your AI agent to):
+ELIZA loads with the Omarchy shell for as long as it is enabled. **Quit ELIZA**
+in Settings, Ctrl+Q, and `omarchy-shell eliza quit` use the same persistent disable
+operation as Omarchy’s **Disable Plugin** menu. Use **Setup → Plugins → Enable
+Plugin** to bring it back, or run:
 
 ```bash
 omarchy plugin disable io.github.vichong.eliza   # leaves the bar, stays off across restarts
@@ -208,9 +213,34 @@ and any configuration/script error.
 ## Verification
 
 ```sh
-for test in tests/test_*.js; do node "$test"; done
+for test in tests/test_*.js; do node "$test" || exit; done
+```
+
+`tests/test_quit.js` is an offscreen runtime integration test, not a portable
+Node unit test. It requires `quickshell` on PATH, the installed Omarchy shell
+at `/usr/share/omarchy/shell`, the installed Omarchy CLI under
+`/usr/share/omarchy/bin`, and Qt 6's `QtTest` QML module. The loop explicitly
+skips it when Quickshell or the Omarchy shell/CLI is absent. With those dependencies
+installed, run it directly to check Quit in both eras:
+
+```sh
+node tests/test_quit.js
 PATH=/usr/lib/qt6/bin:$PATH QML_IMPORT_PATH=/usr/share/omarchy/shell qmllint Service.qml Console.qml Panel.qml Era*.qml
 ```
+
+The Quit harness isolates HOME and XDG paths in a temporary `eliza-quit-*`
+directory and removes it afterward; it does not alter live settings or restart
+the shell. It clicks the real Quit button and runs the installed disable CLI,
+but intercepts `omarchy-shell` with a sandbox stub: no live disable IPC is sent.
+It also checks that detached disable completes after its Service is destroyed.
+Failure notifications are also intercepted in the sandbox.
+A passing run reports `QUIT REGRESSION: 0 failures, 24 passed`.
+
+A development plugin installed as a directory symlink is not traversed by the
+shell's recursive file watcher, so editing the repo may leave old QML running.
+Verify the live handler rather than assuming an automatic reload. The supported
+`omarchy-shell shell rescanPlugins` reload can also leave cached components on
+some shell versions; if it does, restart the shell only with the user's approval.
 
 `docs/banner.png` is rendered from `docs/banner.svg`, which sets ELIZA's name in
 the bundled VT323, so point fontconfig at `fonts/` when rendering:
